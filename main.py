@@ -17,7 +17,11 @@ for module in os.listdir(module_dir):
         command_handler = getattr(command_module, 'command_handler', None)
         if command_handler:
             bot.add_handler(command_handler)
+            
 
+        callback_handler = getattr(command_module, 'callback_handler', None)
+        if callback_handler:
+            bot.add_handler(callback_handler)
 if __name__ == '__main__':
     print("Bot is running...")
     bot.run_polling()
